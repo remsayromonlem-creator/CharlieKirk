@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Kirk | Sports & Entertainment</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<header class="header">
+  <div class="container nav">
+    <div class="logo">THE KIRK</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="sports.html">Sports</a>
+      <a href="entertainment.html">Entertainment</a>
+      <input type="text" id="searchInput" placeholder="Search articles...">
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content container">
+    <span class="tag sport">Featured</span>
+    <h1>LeBron James Defies Time Again</h1>
+    <p>The King delivers another historic performance in year 21.</p>
+    <button onclick="openArticle('lebron')">Read Article</button>
+  </div>
+</section>
+
+<main class="container">
+
+  <section>
+    <h2 class="section-title">Trending</h2>
+    <div class="grid" id="trending"></div>
+  </section>
+
+  <section>
+    <h2 class="section-title">Latest Articles</h2>
+    <div class="grid" id="articles"></div>
+  </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
