@@ -103,7 +103,16 @@ function searchArticles(query) {
 }
 
 document.getElementById("searchInput")?.addEventListener("input", e => {
-  searchArticles(e.target.value);
+  const query = e.target.value.trim();
+
+  // If we're NOT on the homepage, redirect
+  if (!document.getElementById("articles")) {
+    localStorage.setItem("searchQuery", query);
+    window.location.href = "index.html";
+    return;
+  }
+
+  searchArticles(query);
 });
 
 render("articles", a => true);
@@ -112,6 +121,13 @@ render("sportsArticles", a => a.category === "sport");
 render("entArticles", a => a.category === "ent");
 loadArticle();
 
+const savedQuery = localStorage.getItem("searchQuery");
+
+if (savedQuery && document.getElementById("articles")) {
+  searchArticles(savedQuery);
+  localStorage.removeItem("searchQuery");
+}
+
 function toggleInfo() {
   const siteInfo = document.getElementById("siteInfo");
   if (!siteInfo) return;
@@ -119,6 +135,7 @@ function toggleInfo() {
   siteInfo.style.display =
     siteInfo.style.display === "flex" ? "none" : "flex";
 }
+
 
 
 
