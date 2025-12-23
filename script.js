@@ -111,3 +111,12 @@ render("trending", a => a.trending);
 render("sportsArticles", a => a.category === "sport");
 render("entArticles", a => a.category === "ent");
 loadArticle();
+
+function toggleInfo() {
+  const siteInfo = document.getElementById("siteInfo");
+  if (!siteInfo) return;
+
+  siteInfo.style.display =
+    siteInfo.style.display === "flex" ? "none" : "flex";
+}
+
