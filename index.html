@@ -54,9 +54,24 @@
     <p><strong>Platform:</strong> GitHub Pages</p>
   </div>
 </div>
-  
+
+  <script>
+  const kirkLogo = document.getElementById("kirkLogo");
+  const siteInfo = document.querySelector(".site-info");
+  const closeBtn = document.querySelector(".close-info");
+
+  kirkLogo.addEventListener("click", () => {
+    siteInfo.style.display = "flex";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    siteInfo.style.display = "none";
+  });
+</script>
+
 </body>
 </html>
+
 
 
 
