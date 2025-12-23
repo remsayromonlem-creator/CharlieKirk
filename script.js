@@ -3,7 +3,7 @@ const articles = [
     id: "lebron",
     title: "LeBron James Defies Time Again",
     category: "sport",
-    image: "https://upload.wikimedia.org/wikipedia/commons/7/7a/LeBron_James_Lakers.jpg",
+    image: "https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png",
     excerpt: "The King dominates once more in year 21.",
     content: "LeBron James continues to silence critics with another dominant performance...",
     trending: true
@@ -119,4 +119,5 @@ function toggleInfo() {
   siteInfo.style.display =
     siteInfo.style.display === "flex" ? "none" : "flex";
 }
+
 
