@@ -77,6 +77,15 @@ function searchArticles(query) {
     return;
   }
 
+  function closeSearch() {
+  const overlay = document.getElementById("searchOverlay");
+  const input = document.getElementById("searchInput");
+
+  if (overlay) overlay.style.display = "none";
+  if (input) input.value = "";
+}
+  
+
   const results = articles.filter(a =>
     a.title.toLowerCase().includes(q) ||
     a.excerpt.toLowerCase().includes(q) ||
@@ -138,6 +147,7 @@ function toggleInfo() {
   siteInfo.style.display =
     siteInfo.style.display === "flex" ? "none" : "flex";
 }
+
 
 
 
