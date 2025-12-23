@@ -75,3 +75,40 @@ render("trending", a => a.trending);
 render("sportsArticles", a => a.category === "sport");
 render("entArticles", a => a.category === "ent");
 loadArticle();
+
+function searchArticles(query) {
+  const q = query.toLowerCase().trim();
+
+  if (q === "") {
+    render("articles", () => true);
+    return;
+  }
+
+  const results = articles.filter(a =>
+    a.title.toLowerCase().includes(q) ||
+    a.excerpt.toLowerCase().includes(q) ||
+    a.content.toLowerCase().includes(q)
+  );
+
+  const container = document.getElementById("articles");
+  if (!container) return;
+
+  if (results.length === 0) {
+    container.innerHTML = `<p>No articles found for "${query}".</p>`;
+    return;
+  }
+
+  container.innerHTML = "";
+  results.forEach(a => {
+    container.innerHTML += `
+      <div class="card" onclick="openArticle('${a.id}')">
+        <img src="${a.image}">
+        <div class="card-body">
+          <span class="tag ${a.category}">${a.category.toUpperCase()}</span>
+          <h3>${a.title}</h3>
+          <p>${a.excerpt}</p>
+        </div>
+      </div>
+    `;
+  });
+}
