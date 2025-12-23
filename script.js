@@ -67,9 +67,13 @@ function loadArticle() {
 
 function searchArticles(query) {
   const q = query.toLowerCase().trim();
+  const overlay = document.getElementById("searchOverlay");
+  const resultsContainer = document.getElementById("searchResults");
+
+  if (!overlay || !resultsContainer) return;
 
   if (q === "") {
-    render("articles", () => true);
+    overlay.style.display = "none";
     return;
   }
 
@@ -79,27 +83,26 @@ function searchArticles(query) {
     a.content.toLowerCase().includes(q)
   );
 
-  const container = document.getElementById("articles");
-  if (!container) return;
+  resultsContainer.innerHTML = "";
 
   if (results.length === 0) {
-    container.innerHTML = `<p>No articles found for "${query}".</p>`;
-    return;
+    resultsContainer.innerHTML = `<p>No results found for "${query}".</p>`;
+  } else {
+    results.forEach(a => {
+      resultsContainer.innerHTML += `
+        <div class="card" onclick="openArticle('${a.id}')">
+          <img src="${a.image}">
+          <div class="card-body">
+            <span class="tag ${a.category}">${a.category.toUpperCase()}</span>
+            <h3>${a.title}</h3>
+            <p>${a.excerpt}</p>
+          </div>
+        </div>
+      `;
+    });
   }
 
-  container.innerHTML = "";
-  results.forEach(a => {
-    container.innerHTML += `
-      <div class="card" onclick="openArticle('${a.id}')">
-        <img src="${a.image}">
-        <div class="card-body">
-          <span class="tag ${a.category}">${a.category.toUpperCase()}</span>
-          <h3>${a.title}</h3>
-          <p>${a.excerpt}</p>
-        </div>
-      </div>
-    `;
-  });
+  overlay.style.display = "flex";
 }
 
 document.getElementById("searchInput")?.addEventListener("input", e => {
@@ -135,6 +138,7 @@ function toggleInfo() {
   siteInfo.style.display =
     siteInfo.style.display === "flex" ? "none" : "flex";
 }
+
 
 
 
