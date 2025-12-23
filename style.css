@@ -162,6 +162,11 @@ nav input {
   right: 15px;
   font-size: 26px;
   cursor: pointer;
+  color: #333;
+}
+
+.close-info:hover {
+  color: #000;
 }
 
 .kirk-logo {
@@ -172,4 +177,5 @@ nav input {
 .kirk-logo:hover {
   opacity: 0.8;
 }
+
 
