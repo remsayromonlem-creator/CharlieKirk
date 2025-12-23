@@ -65,6 +65,14 @@ function loadArticle() {
   `;
 }
 
+function closeSearch() {
+  const overlay = document.getElementById("searchOverlay");
+  const input = document.getElementById("searchInput");
+
+  if (overlay) overlay.style.display = "none";
+  if (input) input.value = "";
+}
+
 function searchArticles(query) {
   const q = query.toLowerCase().trim();
   const overlay = document.getElementById("searchOverlay");
@@ -77,13 +85,6 @@ function searchArticles(query) {
     return;
   }
 
-  function closeSearch() {
-  const overlay = document.getElementById("searchOverlay");
-  const input = document.getElementById("searchInput");
-
-  if (overlay) overlay.style.display = "none";
-  if (input) input.value = "";
-}
   
 
   const results = articles.filter(a =>
@@ -147,6 +148,7 @@ function toggleInfo() {
   siteInfo.style.display =
     siteInfo.style.display === "flex" ? "none" : "flex";
 }
+
 
 
 
