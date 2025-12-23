@@ -65,17 +65,6 @@ function loadArticle() {
   `;
 }
 
-document.getElementById("searchInput")?.addEventListener("input", e => {
-  const q = e.target.value.toLowerCase();
-  render("articles", a => a.title.toLowerCase().includes(q));
-});
-
-render("articles", a => true);
-render("trending", a => a.trending);
-render("sportsArticles", a => a.category === "sport");
-render("entArticles", a => a.category === "ent");
-loadArticle();
-
 function searchArticles(query) {
   const q = query.toLowerCase().trim();
 
@@ -112,3 +101,13 @@ function searchArticles(query) {
     `;
   });
 }
+
+document.getElementById("searchInput")?.addEventListener("input", e => {
+  searchArticles(e.target.value);
+});
+
+render("articles", a => true);
+render("trending", a => a.trending);
+render("sportsArticles", a => a.category === "sport");
+render("entArticles", a => a.category === "ent");
+loadArticle();
